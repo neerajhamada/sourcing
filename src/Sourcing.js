@@ -1,25 +1,38 @@
 import React from "react";
+import './index.css';
+import AddDetails from './AddDetails';
+import Sample from "./Sample";
+import Form from "./Form";
 
 export default function Sourcing() {
     const style = {
         color: '#1DB954',
-        // fontWeight: 'bold'
+        fontWeight: 'bold',
+        padding: '15px',
+        margin: '5px'
     };
     const mailStyle = {
         color: '#1DB954',
-        textDecoration: 'none'
-    }
+        fontWeight: 'bold'
+    };
     return (
+    <>
         <div className="table-responsive">
-        <h2 style={style}> Labs in LBG</h2>
-        <table className="table table-dark table-hover ">
-        <thead style={style}>
+        <h2 style={style} className="text-center">Sourcing Status</h2>
+        <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+            {/* <AddDetails /> */}
+            {/* <Sample /> */}
+            <Form />
+            
+        </div>
+        <table className="table table-dark table-hover text-center">
+        <thead className="table-active">
         <tr>
             <th>Sender</th>
             <th>Recieved through</th>
+            <th>Source</th>
             <th>Recieved Date</th>
             <th>Evaluated By</th>
-            <th>Recieved By</th>
             <th>Evaluated Date</th>
             <th>Final Feedback</th>
             <th>Next Steps</th>
@@ -34,17 +47,17 @@ export default function Sourcing() {
             <td> HR </td>
             <td> 01/10/2021 </td>
             <td> I have moved the profile to next steps </td>
-            <td className="bg-success">Profile Accepeted</td>
+            <td className="bg-success">Profile Accepted</td>
         </tr>
         <tr>
             <td> HR </td>
             <td> <a href="mailto:abc@gmail.com" style={mailStyle}>Email</a></td>
-            <td> External Profile </td>
+            <td> LinkedIn </td>
             <td> 27/09/2021 </td>
             <td> HR </td>
             <td> 01/10/2021 </td>
             <td> I have moved the profile to next steps </td>
-            <td className="bg-success">Profile Accepeted</td>
+            <td className="bg-success">Profile Accepted</td>
         </tr>
         <tr>
             <td> HR </td>
@@ -74,7 +87,7 @@ export default function Sourcing() {
             <td> HR </td>
             <td> 20/10/2021 </td>
             <td> I have moved the profile to next steps </td>
-            <td className="bg-success">Profile Accepeted</td>
+            <td className="bg-success">Profile Accepted</td>
         </tr>
         <tr>
             <td> HR </td>
@@ -84,10 +97,11 @@ export default function Sourcing() {
             <td> HR </td>
             <td> 01/10/2021 </td>
             <td> I have moved the profile to next steps </td>
-            <td className="bg-success">Profile Accepeted</td>
+            <td className="bg-success">Profile Accepted</td>
         </tr>
         </tbody>
         </table>
         </div>
+    </>
     )
 }
