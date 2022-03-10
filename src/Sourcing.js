@@ -21,84 +21,95 @@ export default function Sourcing() {
         <h2 style={style} className="text-center">Sourcing Status</h2>
         <div className="d-grid gap-2 d-md-flex justify-content-md-end">
             {/* <AddDetails /> */}
-            {/* <Sample /> */}
-            <Form />
+            <Sample />
+            {/* <Form /> */}
             
         </div>
-        <table className="table table-dark table-hover text-center">
-        <thead className="table-active">
+        <table className="table table-dark table-bordered table-hover text-center m-3 shadow " >
+        <thead className="table-active text-nowrap">
         <tr>
-            <th>Sender</th>
-            <th>Recieved through</th>
+            <th>S.NO</th>
             <th>Source</th>
+            <th>Location</th>
+            <th>Recieved via</th>
+            <th>Internal/External</th>
             <th>Recieved Date</th>
+            <th>Lab</th>
+            <th>Sent For Evaluation On</th>
+            <th>Recieved Evaluation On</th>
+            <th>Evaluation Pending (in days)</th>
             <th>Evaluated By</th>
-            <th>Evaluated Date</th>
-            <th>Final Feedback</th>
-            <th>Next Steps</th>
+            <th>Internal Evaluation Feedback</th>
+            <th>Customer Evaluation</th>
+            <th>Selection Status</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td> HR </td>
+            <td> 1. </td>
+            <td className="text-nowrap"> External EP </td>
+            <td className="text-nowrap"> Off-shore </td>
             <td > <a href="mailto:abc@gmail.com" style={mailStyle}>Email</a></td>
-            <td> External Profile </td>
-            <td> 27/09/2021 </td>
+            <td> External </td>
+            <td> 27-09-2021 </td>
+            <td> Loans </td>
+            <td> 01-10-2021 </td>
+            <td> 03-10-2021 </td>
+            <td> 2 </td>
             <td> HR </td>
-            <td> 01/10/2021 </td>
             <td> I have moved the profile to next steps </td>
+            <td> The profile is accepted </td>
             <td className="bg-success">Profile Accepted</td>
         </tr>
         <tr>
+            <td> 2. </td>
+            <td> External EP </td>
+            <td> Off-shore </td>
+            <td > <a href="mailto:abc@gmail.com" style={mailStyle}>Email</a></td>
+            <td> External </td>
+            <td> 29-09-2021 </td>
+            <td> OIE </td>
+            <td> 03-10-2021 </td>
+            <td> 05-10-2021 </td>
+            <td> 2 </td>
             <td> HR </td>
-            <td> <a href="mailto:abc@gmail.com" style={mailStyle}>Email</a></td>
-            <td> LinkedIn </td>
-            <td> 27/09/2021 </td>
-            <td> HR </td>
-            <td> 01/10/2021 </td>
             <td> I have moved the profile to next steps </td>
+            <td> The profile is accepted </td>
             <td className="bg-success">Profile Accepted</td>
         </tr>
         <tr>
+            <td> 3. </td>
+            <td> External EP </td>
+            <td> Off-shore </td>
+            <td > <a href="mailto:abc@gmail.com" style={mailStyle}>Email</a></td>
+            <td> External </td>
+            <td> 01-10-2021 </td>
+            <td> Loans </td>
+            <td> 05-10-2021 </td>
+            <td> 10-10-2021 </td>
+            <td> 5 </td>
             <td> HR </td>
-            <td> <a href="mailto:abc@gmail.com" style={mailStyle}>Email</a></td>
-            <td> External Profile </td>
-            <td> 29/09/2021 </td>
-            <td> HR </td>
-            <td> 03/10/2021 </td>
-            <td> I have made this profile in pending stage </td>
-            <td className="bg-warning">Processing the application</td>
+            <td> Profile did not satisfy our needs</td>
+            <td> The profile is rejected </td>
+            <td className="bg-danger">Profile Rejected</td>
         </tr>
         <tr>
+            <td> 4. </td>
+            <td> External EP </td>
+            <td> Off-shore </td>
+            <td > <a href="mailto:abc@gmail.com" style={mailStyle}>Email</a></td>
+            <td> External </td>
+            <td> 27-09-2021 </td>
+            <td> Loans </td>
+            <td> 01-10-2021 </td>
+            <td> 03-10-2021 </td>
+            <td> 2 </td>
             <td> HR </td>
-            <td> <a href="mailto:abc@gmail.com" style={mailStyle}>Email</a></td>
-            <td> External Profile </td>
-            <td> 01/10/2021 </td>
-            <td> HR </td>
-            <td> 15/10/2021 </td>
-            <td> There are some data need to recieved  </td>
-            <td className="bg-warning">Processing the application</td>
-        </tr>
-        <tr>
-            <td> HR </td>
-            <td> <a href="mailto:abc@gmail.com" style={mailStyle}>Email </a></td>
-            <td> External Profile </td>
-            <td> 10/09/2021 </td>
-            <td> HR </td>
-            <td> 20/10/2021 </td>
             <td> I have moved the profile to next steps </td>
+            <td> The profile is accepted </td>
             <td className="bg-success">Profile Accepted</td>
         </tr>
-        <tr>
-            <td> HR </td>
-            <td> <a href="mailto:abc@gmail.com" style={mailStyle}> Email </a></td>
-            <td> External Profile </td>
-            <td> 27/09/2021 </td>
-            <td> HR </td>
-            <td> 01/10/2021 </td>
-            <td> I have moved the profile to next steps </td>
-            <td className="bg-success">Profile Accepted</td>
-        </tr>
+        
         </tbody>
         </table>
         </div>
