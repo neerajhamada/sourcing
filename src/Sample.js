@@ -1,50 +1,64 @@
 import React from "react";
 import { useForm } from 'react-hook-form';
+import './index.css';
 
 import axios from 'axios';
 
 
 export default function Sample () {
     const {register, handleSubmit,formState:{errors},reset,trigger} = useForm();
-    // const onSubmit = (data) =>{
-    //     const employeeDetails = {"data": data}
-    //     axios.post('http://localhost:7000/insertdata', employeeDetails)
-    //     window.location.reload(false);
-    //     reset();
-    //   };
     return (
         <div className="me-md-5">
             <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Add Details
             </button>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog fs-5.5 fst-sans-serif">
-                <div class="modal-content mx-auto ">
-                <div class="modal-header">
-                    <h5 class="modal-title w-100 fw-bold text-center" id="exampleModalLabel">Enter Sourcing  Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                <form>
-                <div className='mx-auto text-center'>
+                <div className="modal fade " id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div className="modal-dialog modal-xl text-black fs-5.5 fw-bold fst-sans-serif">
+              <div className="modal-content  bg-white" >
+                  <div className="modal-header">
+                  <h5 className="modal-title fw-bold w-100 text-center" id="exampleModalLabel">ENTER CANDIDATE DETAILS</h5> 
+                  <button type="button" className="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div className="modal-body">
+                  
+            <form role="form">
+
+            <div className="row">
+                <div className='col-12 col-md-6 '>
                     <div className="form-floating mb-3">
+                            <select  className="form-select shadow border border-black rounded"  {...register("source",{required:"source is required"})}>
+                              <option value="selectsrc" selected hidden >select source</option>
+                                <option value="internal">Internal</option>
+                                <option value="ukEP">UK EP</option>
+                                <option value="externalEP">External - EP</option>
+                                <option value="ukBA">UK BA</option>
+                                <option value="r2r">R2R</option>
+                                <option value="knome">Knome post</option>
+                                <option value="rmg">RMG</option>
+                                <option value="ST">Shailender Tiwari</option>
+                                <option value="internaluk">Internal UK</option>
+                                {/* <option value="externalEPST">External - EP (GBU - Shailender)</option> */}
+                              </select>
+                            <label className="pr-3"  htmlFor="exampleSource" name="source">Source </label>
                           
-                          <input type="text" className="form-control  shadow border border-black rounded " id="sourcesource"  placeholder="Enter Source" {...register("sourcesource",{required:"source is required"})} onKeyUp={() => { trigger("sourcesource");}}/>
+                          {/* <input type="text" className="form-control  shadow border border-black rounded " id="sourcesource"  placeholder="Enter Source" {...register("sourcesource",{required:"source is required"})} onKeyUp={() => { trigger("sourcesource");}}/>
                           <label htmlFor="sourcesource" className='d-inline'>Source</label>
-                          {errors.sourcesource && (<small className='text-danger'>{errors.sourcesource.message}</small>)}
+                          {errors.sourcesource && (<small className='text-danger'>{errors.sourcesource.message}</small>)} */}
                     </div>
         
                     <div className="form-floating mb-3">
-                            <select  className="form-select"  {...register("location",{required:"location is required"})}>
-                              <option value="onshore">On-shore</option>
-                              <option value="offshore">Off-shore</option>
+                            <select  className="form-select shadow border border-black rounded"  {...register("location",{required:"location is required"})}>
+                            <option value="selectloc" selected hidden >select location</option>
+                              <option value="onshore">Onshore</option>
+                              <option value="offshore">Offshore</option>
                             </select>
-                            <label className="pr-3 " htmlFor="exampleInputlocation" name="location">Location </label>
+                            <label className="pr-3"  htmlFor="exampleInputlocation" name="location">Location </label>
                     </div>
 
                     <div className="form-floating mb-3">
-                            <select  className="form-select"  {...register("receivedvia",{required:"received via is required"})}>
-                              <option value="knowme">Knowme</option>
+                            <select  className="form-select  shadow border border-black rounded"  {...register("receivedvia",{required:"received via is required"})}>
+                            <option value="selectmedium" selected hidden >select the medium</option>
+                              <option value="knome">Knome</option>
                               <option value="linkedin">LinkedIn</option>
                               <option value="externalprofile">External Profile</option>
                             </select>
@@ -52,7 +66,8 @@ export default function Sample () {
                     </div>
 
                     <div className="form-floating mb-3">
-                            <select  className="form-select"  {...register("internalexternal",{required:"internal/external is required"})}>
+                            <select  className="form-select shadow border border-black rounded"  {...register("internalexternal",{required:"internal/external is required"})}>
+                            <option value="selectInEx" selected hidden >select internal or external</option>
                               <option value="internal">Internal</option>
                               <option value="external">External</option>
                             </select>
@@ -64,11 +79,11 @@ export default function Sample () {
                           <label htmlFor="sourcereceiveddate" className='d-inline'>Received Date</label>
                           {errors.sourcereceiveddate && (<small className='text-danger'>{errors.sourcereceiveddate.message}</small>)}
                     </div>
-        
+                    
                     <div className="form-floating mb-3">
                             
                             <select  className="form-select shadow border border-black rounded"  {...register("sourcelab",{required:"lab is required"})}>
-                            
+                            <option value="selectlab" selected hidden >select lab</option>
                               <option value="cards">Cards</option>
                               <option value="loans">Loans</option>
                               <option value="banking">Banking</option>
@@ -80,9 +95,11 @@ export default function Sample () {
                             </select>
                             <label className="pr-3 " htmlFor="exampleInputlab" name="lab">Lab </label>
                     </div>
+            </div>
         
-                    <div className="form-floating mb-3">
-                          
+                    <div className="col-12 col-md-6">
+                    
+                  <div className="form-floating mb-3">
                           <input type="date" className="form-control shadow border border-black rounded" id="sourcesentforevaluationon"  placeholder="Sent for Evaluation Date" {...register("sourcesentforevaluationon",{required:"Sent for Evaluation date is required"})} onKeyUp={() => { trigger("sourcesentforevaluationon");}}/>
                           <label htmlFor="sourceevaluatedddate">Sent for Evaluation On</label>
                           {errors.sourcesentforevaluationon && (<small className='text-danger'>{errors.sourcesentforevaluationon.message}</small>)}
@@ -117,35 +134,27 @@ export default function Sample () {
                           {errors.customer && (<small className='text-danger'>{errors.customer.message}</small>)}
                             
                     </div>
-                    <div className="form-floating mb-3">
-                            <select  className="form-select"  {...register("status",{required:"selection status is required"})}>
-                              <option value="accept">Profile Accepted</option>
-                              <option value="reject">Profile Rejected
-                              </option>
+                    <div className="form-floating mb-3 shadow border border-black rounded">
+                            <select  className="form-select"  placeholder="Select status"{...register("status",{required:"selection status is required"})}>
+                              <option value="selected" selected hidden >select status</option>
+                              <option value="accept"> Accepted</option>
+                              <option value="reject" > Rejected</option>
                             </select>
-                            <label className="pr-3 " htmlFor="exampleInputstatus" name="status">Selection Status </label>
+                            <label className="pr-3" htmlFor="exampleInputstatus" name="status">Status </label>
                     </div>
-                </div>
-        
-                    <div className="form-check">
-                            <label className="form-check-label " htmlFor="Check2">I hereby declare that all the information given by me in this application is true and correct to the best of my knowledge and belief.</label>
-                            <input type="checkbox" className="form-check-input" id="Check2" {...register("dec",{required:"Need to accept the Declaration"})}/>
-                            
-                            {errors.dec && (<small className='text-danger'>{errors.dec.message}</small>)}
-                    </div><br/>
-        
-                          <div>
+                    </div>
+                    <div className="text-center pt-2">
                           <input type="submit" className='btn btn-primary' value="Submit"/> 
                     </div>
-                   
-                </form>
+                    </div>
+            </form>
                 </div>
-                <div class="modal-footer">
+                </div>
+                {/* <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
+                </div> */}
                 </div>
             </div>
             </div>
-        </div>
     )
 }

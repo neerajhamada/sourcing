@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './index.css';
 import AddDetails from './AddDetails';
 import Sample from "./Sample";
 import Form from "./Form";
+import axios from "axios";
 
 export default function Sourcing() {
     const style = {
