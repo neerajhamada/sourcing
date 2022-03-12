@@ -24,7 +24,8 @@ export default function Sample () {
             <form role="form">
 
             <div className="row">
-                <div className='col-12 col-md-6 '>
+              <div className='col-12 col-md-1'></div>
+                <div className='col-12 col-md-5 '>
                     <div className="form-floating mb-3">
                             <select  className="form-select shadow border border-black rounded"  {...register("source",{required:"source is required"})}>
                               <option value="selectsrc" selected hidden >select source</option>
@@ -97,7 +98,7 @@ export default function Sample () {
                     </div>
             </div>
         
-                    <div className="col-12 col-md-6">
+                    <div className="col-12 col-md-5">
                     
                   <div className="form-floating mb-3">
                           <input type="date" className="form-control shadow border border-black rounded" id="sourcesentforevaluationon"  placeholder="Sent for Evaluation Date" {...register("sourcesentforevaluationon",{required:"Sent for Evaluation date is required"})} onKeyUp={() => { trigger("sourcesentforevaluationon");}}/>
