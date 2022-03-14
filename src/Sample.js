@@ -9,7 +9,7 @@ export default function Sample () {
     const {register, handleSubmit,formState:{errors},reset,trigger} = useForm();
     return (
         <div className="me-md-5">
-            <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" className="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Add Details
             </button>
                 <div className="modal fade " id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -27,8 +27,8 @@ export default function Sample () {
               <div className='col-12 col-md-1'></div>
                 <div className='col-12 col-md-5 '>
                     <div className="form-floating mb-3">
-                            <select  className="form-select shadow border border-black rounded"  {...register("source",{required:"source is required"})}>
-                              <option value="selectsrc" selected hidden >select source</option>
+                            <select defaultValue={'selectsrc'} className="form-select shadow border border-black rounded"  {...register("source",{required:"source is required"})}>
+                              <option value="selectsrc" hidden >select source</option>
                                 <option value="internal">Internal</option>
                                 <option value="ukEP">UK EP</option>
                                 <option value="externalEP">External - EP</option>
@@ -48,8 +48,8 @@ export default function Sample () {
                     </div>
         
                     <div className="form-floating mb-3">
-                            <select  className="form-select shadow border border-black rounded"  {...register("location",{required:"location is required"})}>
-                            <option value="selectloc" selected hidden >select location</option>
+                            <select defaultValue={'selectloc'} className="form-select shadow border border-black rounded"  {...register("location",{required:"location is required"})}>
+                            <option value="selectloc" hidden >select location</option>
                               <option value="onshore">Onshore</option>
                               <option value="offshore">Offshore</option>
                             </select>
@@ -57,8 +57,8 @@ export default function Sample () {
                     </div>
 
                     <div className="form-floating mb-3">
-                            <select  className="form-select  shadow border border-black rounded"  {...register("receivedvia",{required:"received via is required"})}>
-                            <option value="selectmedium" selected hidden >select the medium</option>
+                            <select defaultValue={'selectmedium'} className="form-select  shadow border border-black rounded"  {...register("receivedvia",{required:"received via is required"})}>
+                            <option value="selectmedium" hidden >select the medium</option>
                               <option value="knome">Knome</option>
                               <option value="linkedin">LinkedIn</option>
                               <option value="externalprofile">External Profile</option>
@@ -67,8 +67,8 @@ export default function Sample () {
                     </div>
 
                     <div className="form-floating mb-3">
-                            <select  className="form-select shadow border border-black rounded"  {...register("internalexternal",{required:"internal/external is required"})}>
-                            <option value="selectInEx" selected hidden >select internal or external</option>
+                            <select defaultValue={'selectInEx'} className="form-select shadow border border-black rounded"  {...register("internalexternal",{required:"internal/external is required"})}>
+                            <option value="selectInEx" hidden >select internal or external</option>
                               <option value="internal">Internal</option>
                               <option value="external">External</option>
                             </select>
@@ -83,8 +83,8 @@ export default function Sample () {
                     
                     <div className="form-floating mb-3">
                             
-                            <select  className="form-select shadow border border-black rounded"  {...register("sourcelab",{required:"lab is required"})}>
-                            <option value="selectlab" selected hidden >select lab</option>
+                            <select defaultValue={'selectlab'}  className="form-select shadow border border-black rounded"  {...register("sourcelab",{required:"lab is required"})}>
+                            <option value="selectlab" hidden >select lab</option>
                               <option value="cards">Cards</option>
                               <option value="loans">Loans</option>
                               <option value="banking">Banking</option>
@@ -136,8 +136,8 @@ export default function Sample () {
                             
                     </div>
                     <div className="form-floating mb-3 shadow border border-black rounded">
-                            <select  className="form-select"  placeholder="Select status"{...register("status",{required:"selection status is required"})}>
-                              <option value="selected" selected hidden >select status</option>
+                            <select defaultValue={'selected'} className="form-select"  placeholder="Select status"{...register("status",{required:"selection status is required"})}>
+                              <option value="selected" hidden >select status</option>
                               <option value="accept"> Accepted</option>
                               <option value="reject" > Rejected</option>
                             </select>
@@ -151,8 +151,8 @@ export default function Sample () {
             </form>
                 </div>
                 </div>
-                {/* <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                {/* <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div> */}
                 </div>
             </div>

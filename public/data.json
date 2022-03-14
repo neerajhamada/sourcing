@@ -1,0 +1,63 @@
+[
+    {
+        "Source":"HR",
+        "Location":"Offshore",
+        "Recieved_via":"Email",
+        "Internal_External":"External",
+        "Recieved_Date":"27-09-2021",
+        "Lab":"Loans",
+        "Sent_For_Evaluation_On":"01-10-2021",
+        "Recieved_Evaluation_On":"03-10-2021",
+        "Evaluation_Pending":"",
+        "Evaluated_By":"HR",
+        "Internal_Evaluation_Feedback":"I have moved the profile to next steps",
+        "Customer_Evaluation":"The profile is accepted",
+        "Selection_Status":"Profile Accepted"
+        
+    },
+    {
+        "Source":"HR",
+        "Location":"Offshore",
+        "Recieved_via":"Email",
+        "Internal_External":"External",
+        "Recieved_Date":"27-09-2021",
+        "Lab":"Loans",
+        "Sent_For_Evaluation_On":"30-09-2021",
+        "Recieved_Evaluation_On":"03-10-2021",
+        "Evaluation_Pending":"",
+        "Evaluated_By":"HR",
+        "Internal_Evaluation_Feedback":"I have moved the profile to next steps",
+        "Customer_Evaluation":"The profile is accepted",
+        "Selection_Status":"Profile Accepted"
+    },
+    {
+        "Source":"HR",
+        "Location":"Offshore",
+        "Recieved_via":"Email",
+        "Internal_External":"External",
+        "Recieved_Date":"27-09-2021",
+        "Lab":"Loans",
+        "Sent_For_Evaluation_On":"01-10-2021",
+        "Recieved_Evaluation_On":"03-10-2021",
+        "Evaluation_Pending":"",
+        "Evaluated_By":"HR",
+        "Internal_Evaluation_Feedback":"Profile did not satisfy our needs",
+        "Customer_Evaluation":"The profile is rejected",
+        "Selection_Status":"Profile Rejected"
+    },
+    {
+        "Source":"HR",
+        "Location":"Offshore",
+        "Recieved_via":"Email",
+        "Internal_External":"External",
+        "Recieved_Date":"27-09-2021",
+        "Lab":"Loans",
+        "Sent_For_Evaluation_On":"01-10-2021",
+        "Recieved_Evaluation_On":"03-10-2021",
+        "Evaluation_Pending":"",
+        "Evaluated_By":"HR",
+        "Internal_Evaluation_Feedback":"I have moved the profile to next steps",
+        "Customer_Evaluation":"The profile is accepted",
+        "Selection_Status":"Profile Accepted"
+    }
+]

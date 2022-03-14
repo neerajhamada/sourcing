@@ -4,9 +4,24 @@ import AddDetails from './AddDetails';
 import Sample from "./Sample";
 import Form from "./Form";
 import axios from "axios";
-// import data from './data.json'
+// import data from '../data.json'
 
 export default function Sourcing() {
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        fetch("../data.json")
+        .then((res) => res.json())
+        .then((data) => setData(data))
+    },[])
+
+    const changeFormat = (str) => {
+        const date = str;
+        const [day, month, year] = date.split('-');
+        const result = [year, month, day].join('-');
+        return result;
+    }
+
     const style = {
         color: '#1DB954',
         fontWeight: 'bold',
@@ -42,7 +57,7 @@ export default function Sourcing() {
             <th>Lab</th>
             <th>Sent For Evaluation On</th>
             <th>Received Evaluation On</th>
-            <th>Evaluation Pending (in days)</th>
+            <th>Evaluation Pending</th>
             <th>Evaluated By</th>
             <th>Internal Evaluation Feedback</th>
             <th>Customer Evaluation</th>
@@ -50,6 +65,29 @@ export default function Sourcing() {
         </tr>
         </thead>
         <tbody>
+            {data.map((details,index)=>{
+                return (
+                    <tr key={index}>
+                        <td>{index+1}</td>
+                        <td>{details.Source}</td>
+                        <td>{details.Location}</td>
+                        <td > <a href="mailto:abc@gmail.com" style={mailStyle}>{details.Recieved_via}</a></td>
+                        <td>{details.Internal_External}</td>
+                        <td>{details.Recieved_Date} </td>
+                        <td>{details.Lab}</td>
+                        <td>{details.Sent_For_Evaluation_On} </td>
+                        <td>{details.Recieved_Evaluation_On} </td>
+                        <td>{(new Date(changeFormat(details.Recieved_Evaluation_On)) - new Date(changeFormat(details.Sent_For_Evaluation_On))) / (1000 * 60 * 60 * 24) + ' day(s)'}</td>
+                        <td>{details.Evaluated_By}</td>
+                        <td>{details.Internal_Evaluation_Feedback}</td>
+                        <td>{details.Customer_Evaluation}</td>
+                        <td className={(details.Selection_Status==="Profile Accepted" ? "bg-success" : 'bg-danger')}>{details.Selection_Status}</td>
+                    </tr>
+                    
+                )
+            })}
+        </tbody>
+        {/* <tbody>
         <tr>
             <td> 1. </td>
             <td className="text-nowrap"> External EP </td>
@@ -115,7 +153,7 @@ export default function Sourcing() {
             <td className="bg-success">Profile Accepted</td>
         </tr>
         
-        </tbody>
+        </tbody> */}
         </table>
         </div>
     </>
