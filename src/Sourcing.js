@@ -45,14 +45,14 @@ export default function Sourcing() {
             {/* <Form /> */}
             
         </div>
-        <table className="table table-dark table-bordered table-hover text-center m-3 shadow " >
-        <thead className="table-active text-nowrap">
+        <table className="table table-dark table-bordered table-hover text-center shadow">
+        <thead className="table-active align-middle">
         <tr>
             <th>S.NO</th>
             <th>Source</th>
             <th>Location</th>
             <th>Received via</th>
-            <th>Internal/External</th>
+            <th>Internal/<br />External</th>
             <th>Received Date</th>
             <th>Lab</th>
             <th>Sent For Evaluation On</th>

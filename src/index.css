@@ -9,3 +9,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;
 }
+
+table{
+  width: 50%;
+}
+thead{
+  border-width:"1px";
+  border-color: #aaaaaa;
+  border-style: solid;
+}
+
+.table >thead>tr>th {
+  background-color: #121212;
+  color: #1DB954;
+}
