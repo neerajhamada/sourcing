@@ -3,7 +3,7 @@ import './index.css';
 import Sample from "./Sample";
 
 
-const SourcingVert = () =>{
+const Vertical = () =>{
     const [data, setData] = useState([])
 
     useEffect(() => {
@@ -24,6 +24,10 @@ const SourcingVert = () =>{
         padding: '15px',
         margin: '5px'
     };
+    const thStyle = {
+        backgroundColor: '#121212',
+        color: '#1DB954'
+    }
     return(
     <>
         <div className="table-responsive">
@@ -34,75 +38,77 @@ const SourcingVert = () =>{
             {/* <Form /> */}
             
         </div>
-        <table className="table text-nowrap table-dark table-bordered m-3 table-hover text-center shadow">
-        <thead className="table-bordered text-start">
+        <table style={{width:'50%'}} className="table text-nowrap table-dark table-bordered m-3 table-hover text-center shadow">
+        <thead style={{borderWidth:"1px",
+            borderColor: '#aaaaaa',
+            borderStyle: 'solid'}}className="table-bordered text-start">
         <tr>
-            <th>S.NO</th>{data.map((details,index)=>{
+            <th style={thStyle}>S.NO</th>{data.map((details,index)=>{
                 return <td>{index+1}</td>
             })} 
         </tr>
         <tr>
-            <th>Source</th>{data.map((details)=>{
+            <th style={thStyle}>Source</th>{data.map((details)=>{
                 return <td>{details.Source}</td>
             })} 
         </tr>
         <tr>
-            <th>Location</th>{data.map((details)=>{
+            <th style={thStyle}>Location</th>{data.map((details)=>{
                 return <td>{details.Location}</td>
             })} 
         </tr>
         <tr>
-            <th>Received via</th>{data.map((details)=>{
+            <th style={thStyle}>Received via</th>{data.map((details)=>{
                 return <td>{details.Received_via}</td>
             })} 
         </tr>
         <tr>
-            <th>Internal/External</th>{data.map((details)=>{
+            <th style={thStyle}>Internal/External</th>{data.map((details)=>{
                 return <td>{details.Internal_External}</td>
             })} 
         </tr>
         <tr>
-            <th>Received Date</th>{data.map((details)=>{
+            <th style={thStyle}>Received Date</th>{data.map((details)=>{
                 return <td>{details.Received_Date}</td>
             })} 
         </tr>
         <tr>
-            <th>Lab</th>{data.map((details)=>{
+            <th style={thStyle}>Lab</th>{data.map((details)=>{
                 return <td>{details.Lab}</td>
             })} 
         </tr>
         <tr>
-            <th>Sent For Evaluation On</th>{data.map((details)=>{
+            <th style={thStyle}>Sent For Evaluation On</th>{data.map((details)=>{
                 return <td>{details.Sent_For_Evaluation_On}</td>
             })} 
         </tr>
         <tr>
-            <th>Received Evaluation On</th>{data.map((details)=>{
+            <th style={thStyle}>Received Evaluation On</th>{data.map((details)=>{
                 return <td>{details.Received_Evaluation_On}</td>
             })} 
         </tr>
         <tr>
-            <th>Evaluation Pending</th>{data.map((details)=>{
+            <th style={thStyle}>Evaluation Pending</th>{data.map((details)=>{
                 return <td>{(new Date(changeFormat(details.Received_Evaluation_On)) - new Date(changeFormat(details.Sent_For_Evaluation_On))) / (1000 * 60 * 60 * 24) + ' day(s)'}</td>
             })} 
         </tr>
         <tr>
-            <th>Evaluated By</th>{data.map((details)=>{
-                return <td>{details.Evaluated_By}</td>
+            <th style={thStyle}>Evaluated By</th>{data.map((details)=>{
+                 return <td>{details.Evaluated_By}</td>
             })} 
         </tr>
         <tr>
-            <th>Internal Evaluation Feedback</th>{data.map((details)=>{
+            <th style={thStyle}>Internal Evaluation Feedback</th>{data.map((details)=>{
                 return <td>{details.Internal_Evaluation_Feedback}</td>
             })} 
         </tr>
         <tr>
-            <th>Customer Evaluation</th>{data.map((details)=>{
+            <th style={thStyle}>Customer Evaluation</th>{data.map((details)=>{
                 return <td>{details.Customer_Evaluation}</td>
             })} 
         </tr>
         <tr>
-            <th>Selection Status</th>{data.map((details)=>{
+            <th style={thStyle}>Selection Status</th>{data.map((details)=>{
                 return <td>{details.Selection_Status}</td>
             })} 
         </tr>
@@ -113,4 +119,4 @@ const SourcingVert = () =>{
     </>
     )
 }
-export default SourcingVert;
+export default Vertical;

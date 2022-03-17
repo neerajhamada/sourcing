@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import './index.css';
 import AddDetails from './AddDetails';
+import './index.css'
 import Sample from "./Sample";
 import Form from "./Form";
 import axios from "axios";
@@ -71,13 +71,13 @@ export default function Sourcing() {
                         <td>{index+1}</td>
                         <td>{details.Source}</td>
                         <td>{details.Location}</td>
-                        <td > <a href="mailto:abc@gmail.com" style={mailStyle}>{details.Recieved_via}</a></td>
+                        <td > <a href="mailto:abc@gmail.com" style={mailStyle}>{details.Received_via}</a></td>
                         <td>{details.Internal_External}</td>
-                        <td>{details.Recieved_Date} </td>
+                        <td>{details.Received_Date} </td>
                         <td>{details.Lab}</td>
                         <td>{details.Sent_For_Evaluation_On} </td>
-                        <td>{details.Recieved_Evaluation_On} </td>
-                        <td>{(new Date(changeFormat(details.Recieved_Evaluation_On)) - new Date(changeFormat(details.Sent_For_Evaluation_On))) / (1000 * 60 * 60 * 24) + ' day(s)'}</td>
+                        <td>{details.Received_Evaluation_On} </td>
+                        <td>{(new Date(changeFormat(details.Received_Evaluation_On)) - new Date(changeFormat(details.Sent_For_Evaluation_On))) / (1000 * 60 * 60 * 24) + ' day(s)'}</td>
                         <td>{details.Evaluated_By}</td>
                         <td>{details.Internal_Evaluation_Feedback}</td>
                         <td>{details.Customer_Evaluation}</td>
