@@ -8,6 +8,7 @@ import axios from "axios";
 
 export default function Sourcing() {
     const [data, setData] = useState([])
+    const [searchTerm, setSearchTerm] = useState('')
 
     useEffect(() => {
         fetch("../data.json")
@@ -45,8 +46,17 @@ export default function Sourcing() {
             {/* <Form /> */}
             
         </div>
-        <table className="table table-dark table-bordered table-hover text-center shadow">
-        <thead className="table-active align-middle">
+        <div className="input-group rounded mb-2">
+            <input type="search" className="form-control rounded" placeholder="Search by Lab or Selection Status" aria-label="Search" aria-describedby="search-addon"
+            onChange={(event)=>{
+                setSearchTerm(event.target.value);
+            }}/>
+        <span class="input-group-text border-0" id="search-addon">
+            <i class="fas fa-search"></i>
+        </span>
+        </div>
+        <table style={{fontSize:'12px'}} className="table table-sm table-responsive-sm table-dark table-bordered table-hover text-center shadow">
+        <thead className="table-active  align-middle">
         <tr>
             <th>S.NO</th>
             <th>Source</th>
@@ -65,7 +75,12 @@ export default function Sourcing() {
         </tr>
         </thead>
         <tbody>
-            {data.map((details,index)=>{
+            {data.filter((val)=>{
+                if(searchTerm === " ") return;
+                else if (val.Selection_Status.toLowerCase().includes(searchTerm.toLowerCase()) || val.Lab.toLowerCase().includes(searchTerm.toLowerCase())) {
+                    return val;
+                }
+            }).map((details,index)=>{
                 return (
                     <tr key={index}>
                         <td>{index+1}</td>

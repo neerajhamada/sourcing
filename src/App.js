@@ -1,12 +1,12 @@
 import './App.css';
 import Sourcing from './Sourcing';
-import Vertical from './Vertical';
+// import Vertical from './Vertical';
 
 function App() {
   return (
     <div className="App">
       <Sourcing />
-      <Vertical />
+      {/* <Vertical /> */}
     </div>
   );
 }
