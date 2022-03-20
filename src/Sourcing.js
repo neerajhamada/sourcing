@@ -46,7 +46,8 @@ export default function Sourcing() {
             {/* <Form /> */}
             
         </div>
-        <div className="input-group rounded mb-3 ">
+        <div className="col-md-3">
+        <div className="input-group rounded mb-3 col-6 mx-auto">
             <input type="search" className="form-control rounded" placeholder="Search by Lab or Selection Status" aria-label="Search" aria-describedby="search-addon"
             onChange={(event)=>{
                 setSearchTerm(event.target.value);
@@ -54,6 +55,7 @@ export default function Sourcing() {
         <span className="input-group-text border-0" id="search-addon">
             <i className="bi bi-search"></i>
         </span>
+        </div>
         </div>
         <table style={{fontSize:'12px'}} className="table table-sm table-responsive-sm table-dark table-bordered table-hover text-center shadow">
         <thead className="table-active  align-middle">
