@@ -9,12 +9,29 @@ import axios from "axios";
 export default function Sourcing() {
     const [data, setData] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
+    // const [filteredResults, setFilteredResults] = useState([]);
+
+    const handleChange = (event) => {
+        setSearchTerm(event.target.value);
+    };
 
     useEffect(() => {
         fetch("../data.json")
         .then((res) => res.json())
         .then((data) => setData(data))
     },[])
+
+    // const searchItems = (search) => {
+    //     setSearchTerm(search)
+    //     if(search===null) {
+    //         setFilteredResults(data)
+    //     }
+    //     const filteredData = ()=> data.filter((item) => {
+    //        return Object.values(item).join('').toLowerCase().includes(search.toLowerCase())
+    //     });
+    //     setFilteredResults(filteredData)
+    // }
+    
 
     const changeFormat = (str) => {
         const date = str;
@@ -49,9 +66,9 @@ export default function Sourcing() {
         <div className="col-md-3">
         <div className="input-group rounded mb-3 col-6 mx-auto">
             <input type="search" className="form-control rounded" placeholder="Search by Lab or Selection Status" aria-label="Search" aria-describedby="search-addon"
-            onChange={(event)=>{
-                setSearchTerm(event.target.value);
-            }}/>
+            value={searchTerm}
+            onChange={handleChange}
+            />
         <span className="input-group-text border-0" id="search-addon">
             <i className="bi bi-search"></i>
         </span>
@@ -77,11 +94,8 @@ export default function Sourcing() {
         </tr>
         </thead>
         <tbody>
-            {data.filter((val)=>{
-                if(searchTerm === " ") return;
-                else if (val.Selection_Status.toLowerCase().includes(searchTerm.toLowerCase()) || val.Lab.toLowerCase().includes(searchTerm.toLowerCase())) {
-                    return val;
-                }
+            {data.filter((item) => {  
+            return Object.values(item).join('').toLowerCase().includes(searchTerm.toLowerCase())
             }).map((details,index)=>{
                 return (
                     <tr key={index}>
@@ -100,7 +114,6 @@ export default function Sourcing() {
                         <td>{details.Customer_Evaluation}</td>
                         <td className={(details.Selection_Status==="Profile Accepted" ? "bg-success" : 'bg-danger')}>{details.Selection_Status}</td>
                     </tr>
-                    
                 )
             })}
         </tbody>
