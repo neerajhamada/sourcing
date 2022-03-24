@@ -1,0 +1,24 @@
+### 
+POST http://localhost:7000/addSupply
+Content-Type: application/json
+
+{
+  "source": "internal",
+  "location": "offshore",
+  "receivedvia": "internal",
+  "internalexternal": "internal",
+  "sourcereceiveddate": "2022-03-15",
+  "sourcelab": "banking",
+  "sourcesentforevaluationon": "2022-03-16",
+  "sourcereceivedevaluationon": "2022-03-17",
+  "sourceevaluatedby": "HR",
+  "feedback": "This profile is not upto the mark",
+  "customer": "This profile is not considered",
+  "status": "reject"
+}
+
+###
+GET http://localhost:7000/getSupply
+
+###
+DELETE http://localhost:7000/deleteSupply

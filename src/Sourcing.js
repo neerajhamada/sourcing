@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import AddDetails from './AddDetails';
+// import AddDetails from './AddDetails';
 import './index.css'
 import Sample from "./Sample";
-import Form from "./Form";
+// import Form from "./Form";
 import axios from "axios";
 // import data from '../data.json'
 
@@ -16,7 +16,7 @@ export default function Sourcing() {
     };
 
     useEffect(() => {
-        fetch("../data.json")
+        fetch("http://localhost:7000/getSupply")
         .then((res) => res.json())
         .then((data) => setData(data))
     },[])
@@ -102,17 +102,17 @@ export default function Sourcing() {
                         <td>{index+1}</td>
                         <td>{details.Source}</td>
                         <td>{details.Location}</td>
-                        <td > <a href="mailto:abc@gmail.com" style={mailStyle}>{details.Received_via}</a></td>
+                        <td >{details.Received_via}</td>
                         <td>{details.Internal_External}</td>
-                        <td>{details.Received_Date} </td>
+                        <td>{changeFormat(details.Received_Date)} </td>
                         <td>{details.Lab}</td>
-                        <td>{details.Sent_For_Evaluation_On} </td>
-                        <td>{details.Received_Evaluation_On} </td>
-                        <td>{(new Date(changeFormat(details.Received_Evaluation_On)) - new Date(changeFormat(details.Sent_For_Evaluation_On))) / (1000 * 60 * 60 * 24) + ' day(s)'}</td>
+                        <td>{changeFormat(details.Sent_For_Evaluation_On)} </td>
+                        <td>{changeFormat(details.Received_Evaluation_On)} </td>
+                        <td>{(new Date(details.Received_Evaluation_On) - new Date(details.Sent_For_Evaluation_On)) / (1000 * 60 * 60 * 24) + ' day(s)'}</td>
                         <td>{details.Evaluated_By}</td>
                         <td>{details.Internal_Evaluation_Feedback}</td>
                         <td>{details.Customer_Evaluation}</td>
-                        <td className={(details.Selection_Status==="Profile Accepted" ? "bg-success" : 'bg-danger')}>{details.Selection_Status}</td>
+                        <td className={(details.Selection_Status === 'Selected' ? "bg-success" : 'bg-danger')}>{details.Selection_Status}</td>
                     </tr>
                 )
             })}

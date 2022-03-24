@@ -6,9 +6,11 @@ import axios from 'axios';
 
 export default function AddDetails () {
     const {register, handleSubmit,formState:{errors},reset,trigger} = useForm();
+
     // const onSubmit = (data) =>{
-    //     const employeeDetails = {"data": data}
-    //     axios.post('http://localhost:7000/insertdata', employeeDetails)
+    //     const supplyDetails = {"data": data}
+    //     // console.log(supplyDetails);
+    //     axios.post('http://localhost:7000/addSupply', supplyDetails)
     //     window.location.reload(false);
     //     reset();
     //   };
@@ -26,7 +28,6 @@ export default function AddDetails () {
                 </div>
                 <div class="modal-body">
                 <form>
-                    
             
                     <div className=' mx-auto text-center'>
                     <div className="form-floating mb-3">
