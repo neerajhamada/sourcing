@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
 
 import axios from 'axios';
@@ -6,10 +6,11 @@ import axios from 'axios';
 
 export default function Sample () {
     const {register, handleSubmit,formState:{errors},reset,trigger} = useForm();
+
     const onSubmit = (data) =>{
         const supplyDetails = {"data": data}
         // console.log(supplyDetails);
-        axios.post('http://localhost:7000/addSupply', supplyDetails)
+        axios.post('http://localhost:7000/addSupply', supplyDetails);
         window.location.reload(false);
         reset();
       };

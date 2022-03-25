@@ -3,17 +3,26 @@ import React, { useEffect, useState } from "react";
 import './index.css'
 import Sample from "./Sample";
 // import Form from "./Form";
-import axios from "axios";
+// import axios from "axios";
 // import data from '../data.json'
 
 export default function Sourcing() {
     const [data, setData] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
-    // const [filteredResults, setFilteredResults] = useState([]);
+    const [filteredResults, setFilteredResults] = useState([]);
+    // const [alert,setAlert] = useState(null);
 
     const handleChange = (event) => {
         setSearchTerm(event.target.value);
     };
+
+    // const showAlert = (msg,type)=> {
+    //     return (
+    //         <div className={`alert alert-${type}`}>
+    //         <i className='fas fa-info-circle' /> {msg}
+    //         </div>
+    //     );
+    // };
 
     useEffect(() => {
         fetch("http://localhost:7000/getSupply")
@@ -21,17 +30,15 @@ export default function Sourcing() {
         .then((data) => setData(data))
     },[])
 
-    // const searchItems = (search) => {
-    //     setSearchTerm(search)
-    //     if(search===null) {
-    //         setFilteredResults(data)
-    //     }
-    //     const filteredData = ()=> data.filter((item) => {
-    //        return Object.values(item).join('').toLowerCase().includes(search.toLowerCase())
-    //     });
-    //     setFilteredResults(filteredData)
-    // }
-    
+    useEffect(() => {
+        if(searchTerm==='') {
+            setFilteredResults(data)
+        }
+        const filtered = data.filter((item) => {  
+            return Object.values(item).join('').toLowerCase().includes(searchTerm.toLowerCase())
+            })
+        setFilteredResults(filtered)
+    }, [searchTerm, data])
 
     const changeFormat = (str) => {
         const date = str;
@@ -64,18 +71,18 @@ export default function Sourcing() {
             
         </div>
         <div className="col-md-3">
-        <div className="input-group rounded mb-3 col-6 mx-auto">
-            <input type="search" className="form-control rounded" placeholder="Search by Lab or Selection Status" aria-label="Search" aria-describedby="search-addon"
+        <div className="input-group mb-3 ms-3 col-6 mx-auto">
+            <input type="search" className="form-control rounded" placeholder="Search..." aria-label="Search" aria-describedby="search-addon"
             value={searchTerm}
             onChange={handleChange}
             />
-        <span className="input-group-text border-0" id="search-addon">
+        <span className="input-group-text" id="search-addon">
             <i className="bi bi-search"></i>
         </span>
         </div>
         </div>
         <table style={{fontSize:'12px'}} className="table table-sm table-responsive-sm table-dark table-bordered table-hover text-center shadow">
-        <thead className="table-active  align-middle">
+        <thead className="table-active align-middle">
         <tr>
             <th>S.NO</th>
             <th>Source</th>
@@ -94,9 +101,8 @@ export default function Sourcing() {
         </tr>
         </thead>
         <tbody>
-            {data.filter((item) => {  
-            return Object.values(item).join('').toLowerCase().includes(searchTerm.toLowerCase())
-            }).map((details,index)=>{
+            {filteredResults.length > 0 &&
+            filteredResults.map((details,index)=>{ 
                 return (
                     <tr key={index}>
                         <td>{index+1}</td>
@@ -115,7 +121,8 @@ export default function Sourcing() {
                         <td className={(details.Selection_Status === 'Selected' ? "bg-success" : 'bg-danger')}>{details.Selection_Status}</td>
                     </tr>
                 )
-            })}
+            })
+        }
         </tbody>
         {/* <tbody>
         <tr>
@@ -185,6 +192,7 @@ export default function Sourcing() {
         
         </tbody> */}
         </table>
+        {!filteredResults.length>0 && <h5 className="text-center" style={{color:'#1DB954'}}>No Data Available</h5>}
         </div>
     </>
     )

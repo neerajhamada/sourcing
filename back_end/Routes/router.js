@@ -19,7 +19,7 @@ async function run() {
   router.post('/addSupply', async (req, res) => {
     var data = req.body.data
     await supplyCollection.insertOne(data)
-    console.log(data)
+    // console.log(data)
     res.send(data)
   })
   router.get('/getSupply', async (req, res) => {
