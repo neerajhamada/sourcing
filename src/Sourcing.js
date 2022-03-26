@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 // import AddDetails from './AddDetails';
 import './index.css'
 import Sample from "./Sample";
+import Alert from './Alert'
 // import Form from "./Form";
 // import axios from "axios";
 // import data from '../data.json'
@@ -10,19 +11,16 @@ export default function Sourcing() {
     const [data, setData] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
     const [filteredResults, setFilteredResults] = useState([]);
-    // const [alert,setAlert] = useState(null);
+    const [alert,setAlert] = useState(null);
 
     const handleChange = (event) => {
         setSearchTerm(event.target.value);
     };
 
-    // const showAlert = (msg,type)=> {
-    //     return (
-    //         <div className={`alert alert-${type}`}>
-    //         <i className='fas fa-info-circle' /> {msg}
-    //         </div>
-    //     );
-    // };
+    const showAlert = (msg,type) =>{
+        setAlert({ msg , type })
+        setTimeout(()=> setAlert(null),5000)
+    };
 
     useEffect(() => {
         fetch("http://localhost:7000/getSupply")
@@ -36,7 +34,7 @@ export default function Sourcing() {
         }
         const filtered = data.filter((item) => {  
             return Object.values(item).join('').toLowerCase().includes(searchTerm.toLowerCase())
-            })
+        })
         setFilteredResults(filtered)
     }, [searchTerm, data])
 
@@ -66,10 +64,10 @@ export default function Sourcing() {
         <h2 style={style} className="text-center">Sourcing Status</h2>
         <div className="d-grid gap-2 d-md-flex justify-content-md-end">
             {/* <AddDetails /> */}
-            <Sample />
+            <Sample showAlert={showAlert} />
             {/* <Form /> */}
-            
         </div>
+        <Alert alert={alert} />
         <div className="col-md-3">
         <div className="input-group mb-3 ms-3 col-6 mx-auto">
             <input type="search" className="form-control rounded" placeholder="Search..." aria-label="Search" aria-describedby="search-addon"

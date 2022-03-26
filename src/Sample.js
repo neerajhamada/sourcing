@@ -1,25 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
 
 import axios from 'axios';
 
 
-export default function Sample () {
+export default function Sample ({showAlert}) {
     const {register, handleSubmit,formState:{errors},reset,trigger} = useForm();
+    // const [hideModal,setHideModal] = useState(true);
 
-    const onSubmit = (data) =>{
+    // useEffect(()=>{
+    //   !hideModal && 
+    // },[hideModal])
+    const onSubmit = (data,e) =>{
+        e.preventDefault();
         const supplyDetails = {"data": data}
         // console.log(supplyDetails);
         axios.post('http://localhost:7000/addSupply', supplyDetails);
+        showAlert('Details Added Successfully','success');
+        // setHideModal(false);
         window.location.reload(false);
         reset();
       };
+    
     return (
         <div className="me-md-5">
             <button type="button" className="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Add Details
             </button>
-                <div className="modal fade " id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div className="modal fade " id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div className="modal-dialog modal-xl text-black fs-5.5 fw-bold fst-sans-serif">
               <div className="modal-content  bg-white" >
                   <div className="modal-header">
@@ -164,7 +172,7 @@ export default function Sample () {
                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div> */}
                 </div>
-            </div>
+            </div> 
             </div>
     )
 }

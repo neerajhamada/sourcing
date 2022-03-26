@@ -31,6 +31,7 @@ async function run() {
   //   const data = await supplyCollection.drop()
   //   res.status(200).json({ msg: `The Collection is deleted ${data}` });
   // })
+
   // router.put('/updatedata1', async (req, res) => {
   //   var newData = req.body.data
   //   var lab = req.body.Lab
