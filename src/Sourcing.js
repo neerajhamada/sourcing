@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 // import AddDetails from './AddDetails';
 import './index.css'
 import Sample from "./Sample";
-import Alert from './Alert'
+import Filter from "./Filter";
 // import Form from "./Form";
 // import axios from "axios";
 // import data from '../data.json'
@@ -10,24 +10,23 @@ import Alert from './Alert'
 export default function Sourcing() {
     const [data, setData] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
-    const [filteredResults, setFilteredResults] = useState([]);
-    const [alert,setAlert] = useState(null);
+    const [filteredResults,setFilteredResults] = useState([]);
+    // const [searchedResults, setSearchedResults] = useState([]);
 
     const handleChange = (event) => {
         setSearchTerm(event.target.value);
     };
 
-    const showAlert = (msg,type) =>{
-        setAlert({ msg , type })
-        setTimeout(()=> setAlert(null),5000)
-    };
+    const handleFilter = (filteredData) =>{
+        setFilteredResults(filteredData)
+    }
 
     useEffect(() => {
         fetch("http://localhost:7000/getSupply")
         .then((res) => res.json())
-        .then((data) => setData(data))
+        .then((data) => setData(data));
     },[])
-
+    
     useEffect(() => {
         if(searchTerm==='') {
             setFilteredResults(data)
@@ -38,12 +37,15 @@ export default function Sourcing() {
         setFilteredResults(filtered)
     }, [searchTerm, data])
 
+   
+
     const changeFormat = (str) => {
         const date = str;
         const [day, month, year] = date.split('-');
         const result = [year, month, day].join('-');
         return result;
     }
+
 
     const style = {
         color: '#1DB954',
@@ -64,10 +66,10 @@ export default function Sourcing() {
         <h2 style={style} className="text-center">Sourcing Status</h2>
         <div className="d-grid gap-2 d-md-flex justify-content-md-end">
             {/* <AddDetails /> */}
-            <Sample showAlert={showAlert} />
+            {/* <Sample showAlert={showAlert} /> */}
+            <Sample />
             {/* <Form /> */}
         </div>
-        <Alert alert={alert} />
         <div className="col-md-3">
         <div className="input-group mb-3 ms-3 col-6 mx-auto">
             <input type="search" className="form-control rounded" placeholder="Search..." aria-label="Search" aria-describedby="search-addon"
@@ -83,19 +85,37 @@ export default function Sourcing() {
         <thead className="table-active align-middle">
         <tr>
             <th>S.NO</th>
-            <th>Source</th>
-            <th>Location</th>
-            <th>Received via</th>
-            <th>Internal/<br />External</th>
-            <th>Received Date</th>
-            <th>Lab</th>
-            <th>Sent For Evaluation On</th>
-            <th>Received Evaluation On</th>
+            <th>Source 
+            <Filter data={data} category={'Source'} handleFilter={handleFilter} />
+            </th>
+            <th>Location 
+            <Filter data={data} category={'Location'} handleFilter={handleFilter} />
+             </th>
+            <th>Received via
+            <Filter data={data} category={'Received_via'} handleFilter={handleFilter} />
+            </th>
+            <th>Internal/<br />External
+            <Filter data={data} category={'Internal_External'} handleFilter={handleFilter} />
+            </th>
+            <th>Received Date
+            <Filter data={data} category={'Received_Date'} handleFilter={handleFilter} />
+            </th>
+            <th>Lab
+            <Filter data={data} category={'Lab'} handleFilter={handleFilter} />
+            </th>
+            <th>Sent For Evaluation On
+            <Filter data={data} category={'Sent_For_Evaluation_On'} handleFilter={handleFilter} />
+            </th>
+            <th>Received Evaluation On
+            <Filter data={data} category={'Received_Evaluation_On'} handleFilter={handleFilter} />
+            </th>
             <th>Evaluation Pending</th>
             <th>Evaluated By</th>
             <th>Internal Evaluation Feedback</th>
             <th>Customer Evaluation</th>
-            <th>Selection Status</th>
+            <th>Selection Status
+            <Filter data={data} category={'Selection_Status'} handleFilter={handleFilter} />
+            </th>
         </tr>
         </thead>
         <tbody>

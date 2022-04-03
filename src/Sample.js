@@ -1,24 +1,28 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from 'react-hook-form';
-
+import Alert from './Alert';
 import axios from 'axios';
 
 
-export default function Sample ({showAlert}) {
+export default function Sample () {
     const {register, handleSubmit,formState:{errors},reset,trigger} = useForm();
-    // const [hideModal,setHideModal] = useState(true);
+    const [alert,setAlert] = useState(null);
 
-    // useEffect(()=>{
-    //   !hideModal && 
-    // },[hideModal])
+    const showAlert = (msg,type) =>{
+      setAlert({ msg , type })
+      setTimeout(()=> {
+        setTimeout(()=> {
+          window.location.reload(false)
+        },500)
+        setAlert(null)
+      },2000)
+    };
     const onSubmit = (data,e) =>{
         e.preventDefault();
         const supplyDetails = {"data": data}
         // console.log(supplyDetails);
         axios.post('http://localhost:7000/addSupply', supplyDetails);
         showAlert('Details Added Successfully','success');
-        // setHideModal(false);
-        window.location.reload(false);
         reset();
       };
     
@@ -30,6 +34,7 @@ export default function Sample ({showAlert}) {
               <div className="modal fade " id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div className="modal-dialog modal-xl text-black fs-5.5 fw-bold fst-sans-serif">
               <div className="modal-content  bg-white" >
+                  <Alert alert={alert} />
                   <div className="modal-header">
                   <h5 className="modal-title fw-bold w-100 text-center" id="exampleModalLabel">ENTER CANDIDATE DETAILS</h5> 
                   <button type="button" className="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -162,7 +167,7 @@ export default function Sample ({showAlert}) {
                     </div>
                     </div>
                     <div className="text-center pt-2">
-                          <input type="submit" className='btn btn-primary' value="Submit"/> 
+                      <input type="submit" className='btn btn-primary' value="Submit"/> 
                     </div>
                     </div>
             </form>
