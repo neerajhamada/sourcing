@@ -22,21 +22,13 @@ const Filter = ({data,category,handleFilter}) => {
     }
     
     function getUnique(arr, comp) {
-        if (comp === 'Received_Date') {
-            const unique =  arr.map(e => changeFormat(e[comp]))
-            .map((e, i, final) => final.indexOf(e) === i && i)
-            .filter((e) => arr[e]).map(e =>  arr[e]);
-            console.log(unique)
-        return unique;
-        }
-
         const unique =  arr.map(e => e[comp])
             .map((e, i, final) => final.indexOf(e) === i && i)
             .filter((e) => arr[e]).map(e => arr[e]);
         return unique;
     }
 
-    return (
+    return (    
         <select
             // value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}

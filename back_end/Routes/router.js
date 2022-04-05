@@ -32,15 +32,15 @@ async function run() {
   //   res.status(200).json({ msg: `The Collection is deleted ${data}` });
   // })
 
-  // router.put('/updatedata1', async (req, res) => {
-  //   var newData = req.body.data
-  //   var lab = req.body.Lab
-  //   var location = req.body.location
-  //   await collection.replaceOne({Lab: lab}, newData)
-  //   res.status(200);
-  // })
+  router.put('/updateSupply', async (req, res) => {
+    const dataId = req.body.data._id
+    const newData = req.body.data
+    await collection.replaceOne({_id: dataId}, newData)
+    res.status(200).send(await collection.findOne({_id: dataId}));;
+  })
+
   }catch (err) {
-      console.error(err)
+    console.error(err)
   }
 }
 run()

@@ -47,8 +47,8 @@ export default function Sample () {
               <div className='col-12 col-md-1'></div>
                 <div className='col-12 col-md-5 '>
                     <div className="form-floating mb-3">
-                            <select defaultValue={'selectsrc'} className="form-select shadow border border-black rounded"  {...register("Source",{required:"Source is required"})}>
-                              <option value="selectsrc" hidden >select source</option>
+                            <select defaultValue={'Source'} id='Source' className="form-select shadow border border-black rounded"  {...register("Source",{required:"Source is required"})}>
+                              <option value="Source" hidden >select source</option>
                                 <option value="Internal">Internal</option>
                                 <option value="UK EP">UK EP</option>
                                 <option value="External - EP">External - EP</option>
@@ -61,6 +61,7 @@ export default function Sample () {
                                 {/* <option value="externalEPST">External - EP (GBU - Shailender)</option> */}
                               </select>
                             <label className="pr-3"  htmlFor="exampleSource" name="source">Source </label>
+                          {errors.Source && (<small className='text-danger'>{errors.Source.message}</small>)}
                           
                           {/* <input type="text" className="form-control  shadow border border-black rounded " id="sourcesource"  placeholder="Enter Source" {...register("sourcesource",{required:"source is required"})} onKeyUp={() => { trigger("sourcesource");}}/>
                           <label htmlFor="sourcesource" className='d-inline'>Source</label>
@@ -68,12 +69,13 @@ export default function Sample () {
                     </div>
         
                     <div className="form-floating mb-3">
-                            <select defaultValue={'selectloc'} className="form-select shadow border border-black rounded"  {...register("Location",{required:"Location is required"})}>
-                            <option value="selectloc" hidden >select location</option>
+                            <select defaultValue={'Location'} className="form-select shadow border border-black rounded"  {...register("Location",{required:"Location is required"})}>
+                            <option value="Location" hidden >select location</option>
                               <option value="Onshore">Onshore</option>
                               <option value="Offshore">Offshore</option>
                             </select>
                             <label className="pr-3"  htmlFor="exampleInputlocation" name="location">Location </label>
+                          {errors.Location && (<small className='text-danger'>{errors.Location.message}</small>)}
                     </div>
 
                     <div className="form-floating mb-3">
@@ -83,14 +85,14 @@ export default function Sample () {
                               <option value="LinkedIn">LinkedIn</option>
                               <option value="External Profile">External Profile</option>
                               <option value="Internal">Internal</option>
-
                             </select>
-                            <label className="pr-3 " htmlFor="exampleInputreceivedvia" name="receivedvia">Received Via</label>
+                            <label className="pr-3 " htmlFor="Received_via" name="receivedvia">Received Via</label>
+                          {errors.Received_via && (<small className='text-danger'>{errors.Received_via.message}</small>)}
                     </div>
 
                     <div className="form-floating mb-3">
-                            <select defaultValue={'selectInEx'} className="form-select shadow border border-black rounded"  {...register("Internal_External",{required:"Internal/External is required"})}>
-                            <option value="selectInEx" hidden >select internal or external</option>
+                            <select defaultValue={'Internal_External'} className="form-select shadow border border-black rounded"  {...register("Internal_External",{required:"Internal/External is required"})}>
+                            <option value="Internal_External" hidden >select internal or external</option>
                               <option value="Internal">Internal</option>
                               <option value="External">External</option>
                             </select>
@@ -98,15 +100,15 @@ export default function Sample () {
                     </div>
         
                     <div className="form-floating mb-3">
-                          <input type="date" className="form-control  shadow border border-black rounded" id="sourcereceiveddate"  placeholder="Received Date" {...register("Received_Date",{required:"Received date is required"})} onKeyUp={() => { trigger("sourcereceiveddate");}}/>
-                          <label htmlFor="sourcereceiveddate" className='d-inline'>Received Date</label>
-                          {errors.sourcereceiveddate && (<small className='text-danger'>{errors.sourcereceiveddate.message}</small>)}
+                          <input type="date" className="form-control  shadow border border-black rounded" id="Received_Date"  placeholder="Received Date" {...register("Received_Date",{required:"Received date is required"})} onKeyUp={() => { trigger("Received_Date");}}/>
+                          <label htmlFor="Received_Date" className='d-inline'>Received Date</label>
+                          {errors.Received_Date && (<small className='text-danger'>{errors.Received_Date.message}</small>)}
                     </div>
                     
                     <div className="form-floating mb-3">
                             
-                            <select defaultValue={'selectlab'}  className="form-select shadow border border-black rounded"  {...register("Lab",{required:"Lab is required"})}>
-                            <option value="selectlab" hidden >select lab</option>
+                            <select defaultValue={'Lab'}  className="form-select shadow border border-black rounded"  {...register("Lab",{required:"Lab is required"})}>
+                            <option value="Lab" hidden >select lab</option>
                               <option value="Cards">Cards</option>
                               <option value="Loans">Loans</option>
                               <option value="Banking">Banking</option>
@@ -123,16 +125,16 @@ export default function Sample () {
                     <div className="col-12 col-md-5">
                     
                   <div className="form-floating mb-3">
-                          <input type="date" className="form-control shadow border border-black rounded" id="sourcesentforevaluationon"  placeholder="Sent for Evaluation Date" {...register("Sent_For_Evaluation_On",{required:"Sent for Evaluation date is required"})} onKeyUp={() => { trigger("sourcesentforevaluationon");}}/>
+                          <input type="date" className="form-control shadow border border-black rounded" id="Sent_For_Evaluation_On"  placeholder="Sent for Evaluation Date" {...register("Sent_For_Evaluation_On",{required:"Sent for Evaluation date is required"})} onKeyUp={() => { trigger("Sent_For_Evaluation_On");}}/>
                           <label htmlFor="sourceevaluatedddate">Sent for Evaluation On</label>
-                          {errors.sourcesentforevaluationon && (<small className='text-danger'>{errors.sourcesentforevaluationon.message}</small>)}
+                          {errors.Sent_For_Evaluation_On && (<small className='text-danger'>{errors.Sent_For_Evaluation_On.message}</small>)}
                     </div>
 
                     <div className="form-floating mb-3">
                           
-                          <input type="date" className="form-control shadow border border-black rounded" id="sourcereceivedevaluationon"  placeholder="Received Evaluation Date" {...register("Received_Evaluation_On",{required:"Received Evaluation date is required"})} onKeyUp={() => { trigger("sourcereceivedevaluationon");}}/>
+                          <input type="date" className="form-control shadow border border-black rounded" id="Received_Evaluation_On"  placeholder="Received Evaluation Date" {...register("Received_Evaluation_On",{required:"Received Evaluation date is required"})} onKeyUp={() => { trigger("Received_Evaluation_On");}}/>
                           <label htmlFor="sourcereceivedevaluatedddate">Received Evaluation On</label>
-                          {errors.sourcereceivedevaluationon && (<small className='text-danger'>{errors.sourcereceivedevaluationon.message}</small>)}
+                          {errors.Received_Evaluation_On && (<small className='text-danger'>{errors.Received_Evaluation_On.message}</small>)}
                     </div>
 
                     <div className="form-floating mb-3">

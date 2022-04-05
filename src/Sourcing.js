@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import './index.css'
 import Sample from "./Sample";
 import Filter from "./Filter";
+import Download from "./Download";
+// import EditSupply from "./EditSupply";
 // import Form from "./Form";
 // import axios from "axios";
 // import data from '../data.json'
@@ -12,6 +14,8 @@ export default function Sourcing() {
     const [searchTerm, setSearchTerm] = useState('')
     const [filteredResults,setFilteredResults] = useState([]);
     // const [searchedResults, setSearchedResults] = useState([]);
+    const [editEditSupplyId, setEditSupplyId] = useState('623f0868b591bb2c68270724');
+
 
     const handleChange = (event) => {
         setSearchTerm(event.target.value);
@@ -20,6 +24,7 @@ export default function Sourcing() {
     const handleFilter = (filteredData) =>{
         setFilteredResults(filteredData)
     }
+
 
     useEffect(() => {
         fetch("http://localhost:7000/getSupply")
@@ -37,7 +42,6 @@ export default function Sourcing() {
         setFilteredResults(filtered)
     }, [searchTerm, data])
 
-   
 
     const changeFormat = (str) => {
         const date = str;
@@ -45,7 +49,10 @@ export default function Sourcing() {
         const result = [year, month, day].join('-');
         return result;
     }
-
+    const handleEditSupply = (event,data) => {
+        event.preventDefault();
+        setEditSupplyId(data.id);
+    }
 
     const style = {
         color: '#1DB954',
@@ -64,10 +71,11 @@ export default function Sourcing() {
     })} */}
         <div className="table-responsive">
         <h2 style={style} className="text-center">Sourcing Status</h2>
-        <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+        <div className="d-grid gap-2 d-md-flex justify-content-md-end pe-3" >
             {/* <AddDetails /> */}
             {/* <Sample showAlert={showAlert} /> */}
             <Sample />
+            <Download supplyData='getSupply' fileName='SupplyDetails' />
             {/* <Form /> */}
         </div>
         <div className="col-md-3">
@@ -116,6 +124,7 @@ export default function Sourcing() {
             <th>Selection Status
             <Filter data={data} category={'Selection_Status'} handleFilter={handleFilter} />
             </th>
+            {/* <th>Update</th> */}
         </tr>
         </thead>
         <tbody>
@@ -126,7 +135,7 @@ export default function Sourcing() {
                         <td>{index+1}</td>
                         <td>{details.Source}</td>
                         <td>{details.Location}</td>
-                        <td >{details.Received_via}</td>
+                        <td>{details.Received_via}</td>
                         <td>{details.Internal_External}</td>
                         <td>{changeFormat(details.Received_Date)} </td>
                         <td>{details.Lab}</td>
@@ -137,6 +146,7 @@ export default function Sourcing() {
                         <td>{details.Internal_Evaluation_Feedback}</td>
                         <td>{details.Customer_Evaluation}</td>
                         <td className={(details.Selection_Status === 'Selected' ? "bg-success" : 'bg-danger')}>{details.Selection_Status}</td>
+                        {/* <td><EditSupply  data={details} handleEditSupply={handleEditSupply}/></td> */}
                     </tr>
                 )
             })
