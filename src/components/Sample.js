@@ -10,10 +10,10 @@ export default function Sample () {
 
     const showAlert = (msg,type) =>{
       setAlert({ msg , type })
-      setTimeout(()=> {
-        setTimeout(()=> {
+      setTimeout(function() {
+        setTimeout(function() {
           window.location.reload(false)
-        },500)
+        },1000)
         setAlert(null)
       },2000)
     };

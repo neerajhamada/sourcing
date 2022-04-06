@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-// import AddDetails from './AddDetails';
-import './index.css'
+import '../index.css'
 import Sample from "./Sample";
 import Filter from "./Filter";
 import Download from "./Download";
-// import EditSupply from "./EditSupply";
+import EditSupply from "./EditSupply";
+import DeleteSupply from "./DeleteSupply";
+import Alert from "./Alert";
+// import AddDetails from './AddDetails';
 // import Form from "./Form";
 // import axios from "axios";
 // import data from '../data.json'
@@ -14,8 +16,19 @@ export default function Sourcing() {
     const [searchTerm, setSearchTerm] = useState('')
     const [filteredResults,setFilteredResults] = useState([]);
     // const [searchedResults, setSearchedResults] = useState([]);
-    const [editEditSupplyId, setEditSupplyId] = useState('623f0868b591bb2c68270724');
+    // const [editEditSupplyId, setEditSupplyId] = useState(null);
 
+    const [alert,setAlert] = useState(null);
+
+    const showAlert = (msg,type) =>{
+      setAlert({ msg , type })
+      setTimeout(()=> {
+        setTimeout(()=> {
+          window.location.reload(false)
+        },500)
+        setAlert(null)
+      },2000)
+    };
 
     const handleChange = (event) => {
         setSearchTerm(event.target.value);
@@ -49,10 +62,6 @@ export default function Sourcing() {
         const result = [year, month, day].join('-');
         return result;
     }
-    const handleEditSupply = (event,data) => {
-        event.preventDefault();
-        setEditSupplyId(data.id);
-    }
 
     const style = {
         color: '#1DB954',
@@ -60,10 +69,7 @@ export default function Sourcing() {
         padding: '15px',
         margin: '5px'
     };
-    const mailStyle = {
-        color: '#1DB954',
-        fontWeight: 'bold'
-    };
+    
     return (
     <>
     {/* {data.map((details)=>{
@@ -89,7 +95,8 @@ export default function Sourcing() {
         </span>
         </div>
         </div>
-        <table style={{fontSize:'12px'}} className="table table-sm table-responsive-sm table-dark table-bordered table-hover text-center shadow">
+        <Alert alert={alert} />
+        <table style={{fontSize:'11px'}} className="table table-sm table-responsive-sm table-dark table-bordered table-hover text-center shadow">
         <thead className="table-active align-middle">
         <tr>
             <th>S.NO</th>
@@ -124,7 +131,7 @@ export default function Sourcing() {
             <th>Selection Status
             <Filter data={data} category={'Selection_Status'} handleFilter={handleFilter} />
             </th>
-            {/* <th>Update</th> */}
+            <th>Update</th>
         </tr>
         </thead>
         <tbody>
@@ -146,7 +153,7 @@ export default function Sourcing() {
                         <td>{details.Internal_Evaluation_Feedback}</td>
                         <td>{details.Customer_Evaluation}</td>
                         <td className={(details.Selection_Status === 'Selected' ? "bg-success" : 'bg-danger')}>{details.Selection_Status}</td>
-                        {/* <td><EditSupply  data={details} handleEditSupply={handleEditSupply}/></td> */}
+                        <td><EditSupply data={data} _id={details._id} index={index} /><DeleteSupply showAlert={showAlert} data={data} _id={details._id} /></td>
                     </tr>
                 )
             })

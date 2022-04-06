@@ -1,5 +1,5 @@
 import './App.css';
-import Sourcing from './Sourcing';
+import Sourcing from './components/Sourcing';
 // import Vertical from './Vertical';
 
 function App() {

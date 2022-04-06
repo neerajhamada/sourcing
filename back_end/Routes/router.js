@@ -1,5 +1,6 @@
 const express = require('express');
 const { MongoClient } = require("mongodb");
+const ObjectId = require('mongodb').ObjectID;
 const dotenv = require('dotenv');
 
 dotenv.config()
@@ -27,16 +28,18 @@ async function run() {
     res.send(data)
   })
   
-  // router.delete('/deleteSupply',async (req,res) => {
-  //   const data = await supplyCollection.drop()
-  //   res.status(200).json({ msg: `The Collection is deleted ${data}` });
-  // })
+  router.delete('/deleteSupply',async (req,res) => {
+    const dataId = req.body.id
+    const data = await supplyCollection.deleteOne({ _id:new ObjectId(dataId)})
+    res.status(200).json({ msg: `The ${data} is deleted` });
+  })
 
-  router.put('/updateSupply', async (req, res) => {
-    const dataId = req.body.data._id
+  router.put('/updateSupply', async (req, res,) => {
+    const dataId = ObjectId(req.body.data.id)
+    // console.log(typeof dataId)
     const newData = req.body.data
-    await collection.replaceOne({_id: dataId}, newData)
-    res.status(200).send(await collection.findOne({_id: dataId}));;
+    await supplyCollection.updateOne({ _id:new ObjectId(dataId)},{ $set: newData });
+    res.status(200);
   })
 
   }catch (err) {
