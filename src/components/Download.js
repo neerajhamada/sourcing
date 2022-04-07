@@ -31,9 +31,10 @@ export default function Download({supplyData,fileName}) {
     console.log(data);
 
     function removeColumn(obj){
-        delete obj._id;
-        delete obj.__v;
-        delete obj.dec
+      delete obj._id;
+      delete obj.__v;
+      delete obj.dec;
+      delete obj.id;
     }
     
     setData(data.map(removeColumn));
