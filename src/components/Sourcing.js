@@ -38,7 +38,6 @@ export default function Sourcing() {
         setFilteredResults(filteredData)
     }
 
-
     useEffect(() => {
         fetch("http://localhost:7000/getSupply")
         .then((res) => res.json())
@@ -107,10 +106,10 @@ export default function Sourcing() {
             <Filter data={data} category={'Location'} handleFilter={handleFilter} />
              </th>
             <th>Received via
-            <Filter data={data} category={'Received_via'} handleFilter={handleFilter} />
+            {/* <Filter data={data} category={'Received_via'} handleFilter={handleFilter} /> */}
             </th>
             <th>Internal/<br />External
-            <Filter data={data} category={'Internal_External'} handleFilter={handleFilter} />
+            {/* <Filter data={data} category={'Internal_External'} handleFilter={handleFilter} /> */}
             </th>
             <th>Received Date
             <Filter data={data} category={'Received_Date'} handleFilter={handleFilter} />

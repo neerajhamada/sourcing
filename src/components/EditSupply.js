@@ -30,7 +30,7 @@ export default function EditSupply ({data,_id,index}) {
       e.preventDefault();
       data.id = _id
       const supplyDetails = {"data": data}
-      console.log(supplyDetails);
+      // console.log(supplyDetails);
       axios.put('http://localhost:7000/updateSupply', supplyDetails);
       showAlert('Details Updated Successfully','success');
       reset();

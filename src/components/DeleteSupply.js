@@ -7,7 +7,7 @@ export default function DeleteSupply({_id,showAlert}) {
 
     const onSubmit = (data,e) =>{
         e.preventDefault();
-        console.log(_id);
+        // console.log(_id);
         axios.delete('http://localhost:7000/deleteSupply', {data: {id: _id}});
         showAlert('Details Deleted Successfully','danger');
         reset();
